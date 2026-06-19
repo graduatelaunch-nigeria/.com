@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Graduate Launch Nigeria</title>
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+
+<body>
+
+<!-- ADMIN HEADER -->
+<header class="admin-header">
+  <div class="container header-content">
+    <h1>Admin Dashboard</h1>
+    <button class="btn-logout" id="logoutBtn">Logout</button>
+  </div>
+</header>
+
+<!-- ADMIN NAVIGATION -->
+<nav class="admin-nav">
+  <div class="container">
+    <ul>
+      <li><a href="#opportunities" class="nav-link active" data-section="opportunities">Opportunities</a></li>
+      <li><a href="#subscribers" class="nav-link" data-section="subscribers">Subscribers</a></li>
+      <li><a href="#messages" class="nav-link" data-section="messages">Contact Messages</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="admin-main">
+  <div class="container">
+
+    <!-- OPPORTUNITIES SECTION -->
+    <section id="opportunities-section" class="admin-section active">
+      <div class="section-header">
+        <h2>Manage Opportunities</h2>
+        <button class="btn-primary" id="addOpportunityBtn">+ Add Opportunity</button>
+      </div>
+
+      <!-- OPPORTUNITIES TABLE -->
+      <div class="table-wrapper">
+        <table id="opportunitiesTable" class="admin-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Organization</th>
+              <th>Category</th>
+              <th>Deadline</th>
+              <th>Featured</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="opportunitiesBody">
+            <!-- Populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <p id="noOpportunities" class="no-data">No opportunities found.</p>
+    </section>
+
+    <!-- SUBSCRIBERS SECTION -->
+    <section id="subscribers-section" class="admin-section">
+      <div class="section-header">
+        <h2>Newsletter Subscribers</h2>
+        <button class="btn-secondary" id="exportSubscribersBtn">Export CSV</button>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="subscribersTable" class="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Subscribed On</th>
+            </tr>
+          </thead>
+          <tbody id="subscribersBody">
+            <!-- Populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <p id="noSubscribers" class="no-data">No subscribers found.</p>
+    </section>
+
+    <!-- CONTACT MESSAGES SECTION -->
+    <section id="messages-section" class="admin-section">
+      <div class="section-header">
+        <h2>Contact Messages</h2>
+        <div class="filter-controls">
+          <select id="statusFilter" class="status-filter">
+            <option value="">All Messages</option>
+            <option value="new">New</option>
+            <option value="read">Read</option>
+            <option value="replied">Replied</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="messages-list" id="messagesList">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <p id="noMessages" class="no-data">No messages found.</p>
+    </section>
+
+  </div>
+</main>
+
+<!-- OPPORTUNITY MODAL -->
+<div id="opportunityModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <h2 id="modalTitle">Add Opportunity</h2>
+
+    <form id="opportunityForm">
+      <div class="form-group">
+        <label for="oppTitle">Title *</label>
+        <input type="text" id="oppTitle" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="oppCategory">Category *</label>
+          <select id="oppCategory" required>
+            <option value="">Select Category</option>
+            <option value="Graduate Trainee">Graduate Trainee</option>
+            <option value="Internship">Internship</option>
+            <option value="Scholarship">Scholarship</option>
+            <option value="Fellowship">Fellowship</option>
+            <option value="Entry-Level">Entry-Level</option>
+            <option value="Remote">Remote</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="oppOrganization">Organization *</label>
+          <input type="text" id="oppOrganization" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="oppLocation">Location *</label>
+          <input type="text" id="oppLocation" required>
+        </div>
+
+        <div class="form-group">
+          <label for="oppDeadline">Deadline *</label>
+          <input type="date" id="oppDeadline" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="oppDescription">Description *</label>
+        <textarea id="oppDescription" rows="4" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="oppLink">Link *</label>
+        <input type="url" id="oppLink" required>
+      </div>
+
+      <div class="form-group checkbox">
+        <input type="checkbox" id="oppFeatured">
+        <label for="oppFeatured">Featured Opportunity</label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Save Opportunity</button>
+        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+      </div>
+
+      <input type="hidden" id="oppId">
+    </form>
+  </div>
+</div>
+
+<!-- MESSAGE DETAIL MODAL -->
+<div id="messageModal" class="modal">
+  <div class="modal-content modal-lg">
+    <button class="modal-close" id="closeMessageModal">&times;</button>
+    <h2>Message Details</h2>
+
+    <div id="messageDetail">
+      <!-- Populated by JavaScript -->
+    </div>
+
+    <div class="form-group">
+      <label for="messageStatus">Status</label>
+      <select id="messageStatus">
+        <option value="new">New</option>
+        <option value="read">Read</option>
+        <option value="replied">Replied</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" id="saveStatusBtn">Update Status</button>
+      <button class="btn-secondary" id="closeMessageDetailBtn">Close</button>
+    </div>
+
+    <input type="hidden" id="messageId">
+  </div>
+</div>
+
+<!-- LOADING SPINNER -->
+<div id="spinner" class="spinner"></div>
+
+<script src="admin-script.js"></script>
+
+</body>
+</html>
