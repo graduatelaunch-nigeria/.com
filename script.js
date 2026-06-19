@@ -549,4 +549,85 @@ el.style.transition =
 observer.observe(el);
 
 });
+
+const SHEET_ID = "1ivBHTajPPYNvXn6mQpjL37j1kZHNliKZnmmULwcNkAg";
+
+const SHEET_URL =
+`https://opensheet.elk.sh/${SHEET_ID}/Sheet1`;
+
+async function loadOpportunities() {
+
+    const container =
+    document.getElementById(
+      "opportunitiesContainer"
+    );
+
+    try {
+
+        const response =
+        await fetch(SHEET_URL);
+
+        const data =
+        await response.json();
+
+        container.innerHTML = "";
+
+        data.forEach(item => {
+
+            container.innerHTML += `
+
+            <div class="opportunity-card">
+
+                <span class="deadline">
+                ${item.deadline}
+                </span>
+
+                <h3>
+                ${item.title}
+                </h3>
+
+                <p class="company">
+                ${item.organization}
+                </p>
+
+                <p class="location">
+                📍 ${item.location}
+                </p>
+
+                <p>
+                ${item.description}
+                </p>
+
+                <br>
+
+                <a href="${item.link}"
+                   target="_blank"
+                   class="btn-primary">
+
+                   Apply Now
+
+                </a>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+    catch(error){
+
+        container.innerHTML = `
+        <p>
+        Unable to load opportunities.
+        </p>
+        `;
+
+        console.error(error);
+
+    }
+
+}
+
 loadOpportunities();
