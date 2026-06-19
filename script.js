@@ -5,129 +5,7 @@
 
 /* Opportunities Database */
 
-const opportunities = [
 
-{
-title: "Graduate Trainee Program 2026",
-category: "Graduate Trainee",
-organization: "XYZ Bank",
-location: "Lagos, Nigeria",
-deadline: "July 30, 2026",
-description: "XYZ Bank is recruiting graduates into its trainee program.",
-link: "https://www.example.com/apply"
-},
-
-{
-title: "Engineering Internship",
-category: "Internship",
-organization: "ABC Energy",
-location: "Abuja, Nigeria",
-deadline: "August 15, 2026",
-description: "Engineering internship for recent graduates.",
-link: "#"
-},
-
-{
-title: "Mastercard Foundation Scholarship",
-category: "Scholarship",
-organization: "Mastercard Foundation",
-location: "Africa",
-deadline: "September 1, 2026",
-description: "Scholarship opportunity for African students.",
-link: "#"
-},
-
-{
-title: "Young Leaders Fellowship",
-category: "Fellowship",
-organization: "Global Leaders Network",
-location: "Remote",
-deadline: "October 10, 2026",
-description: "Leadership development fellowship.",
-link: "#"
-},
-
-{
-title: "Graduate Analyst",
-category: "Entry-Level",
-organization: "TechNova",
-location: "Lagos",
-deadline: "August 12, 2026",
-description: "Entry-level analyst role.",
-link: "#"
-},
-
-{
-title: "Remote Content Associate",
-category: "Remote",
-organization: "Digital Africa",
-location: "Remote",
-deadline: "July 20, 2026",
-description: "Work remotely from anywhere.",
-link: "#"
-},
-
-{
-title: "Finance Graduate Program",
-category: "Graduate Trainee",
-organization: "Access Finance",
-location: "Abuja",
-deadline: "August 25, 2026",
-description: "Graduate development program.",
-link: "#"
-},
-
-{
-title: "Marketing Internship",
-category: "Internship",
-organization: "BrandHub",
-location: "Lagos",
-deadline: "July 29, 2026",
-description: "Marketing internship opportunity.",
-link: "#"
-},
-
-{
-title: "Research Scholarship",
-category: "Scholarship",
-organization: "Global Research Fund",
-location: "International",
-deadline: "November 1, 2026",
-description: "Research funding opportunity.",
-link: "#"
-},
-
-{
-title: "Innovation Fellowship",
-category: "Fellowship",
-organization: "Innovation Lab",
-location: "Remote",
-deadline: "September 18, 2026",
-description: "Innovation and entrepreneurship fellowship.",
-link: "#"
-},
-
-{
-title: "Customer Success Associate",
-category: "Entry-Level",
-organization: "GrowthTech",
-location: "Ibadan",
-deadline: "August 5, 2026",
-description: "Entry-level customer success role.",
-link: "#"
-},
-
-{
-title: "Remote Project Assistant",
-category: "Remote",
-organization: "Future Works",
-location: "Remote",
-deadline: "September 5, 2026",
-description: "Remote support position.",
-link: "#"
-}
-
-];
 
 /* Containers */
 
@@ -211,8 +89,8 @@ createCard(item);
 
 }
 
-renderFeatured();
-renderLatest(opportunities);
+//renderFeatured();
+//renderLatest(opportunities);
 
 /* Search */
 
