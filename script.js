@@ -495,6 +495,44 @@ entry.target.style.transform =
 }
 
 );
+function displayOpportunities(data){
+
+const container =
+document.getElementById("opportunitiesContainer");
+
+container.innerHTML = "";
+
+data.forEach(item => {
+
+container.innerHTML += `
+<div class="opportunity-card">
+
+<span class="deadline">
+${item.Deadline}
+</span>
+
+<h3>${item.Title}</h3>
+
+<p><strong>${item.Organization}</strong></p>
+
+<p>${item.Location}</p>
+
+<p>${item.Description}</p>
+
+<a href="${item.Link}"
+target="_blank"
+class="btn-primary">
+
+Apply Now
+
+</a>
+
+</div>
+`;
+
+});
+
+  }
 
 document.querySelectorAll(
 ".category-card, .tip-card, .opportunity-card"
@@ -511,3 +549,4 @@ el.style.transition =
 observer.observe(el);
 
 });
+loadOpportunities();
